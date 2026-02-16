@@ -1,0 +1,44 @@
+<html lang="en">
+    <head>
+    <title>ex3-06</title>
+      <style>
+        .center { text-align: center; }
+      </style>
+    </head>
+  <body>
+<h2>JS Objects: Properties + Methods</h2>
+<p id="out"></p>
+
+<script>
+  // An object with PROPERTIES (data) and METHODS (functions)
+  const student = {
+    name: "Nicole",          // property
+    major: "Geography",    // property
+    credits: 15,           // property
+
+    // method (uses properties via "this")
+    intro() {
+      return `Hi, I'm ${this.name}. I'm majoring in ${this.major}.`;
+    },
+
+    // method that changes a property
+    subCredits(amount) {
+      this.credits -= amount;
+      return this.credits;
+    }
+  };
+
+  const msg = [
+    `Property example: ${student.name}`,
+    `Method example: ${student.intro()} Currently, I am taking ${student.credits} credits.`,
+    `Method changes property: Next semester, I plan to be taking ${student.subCredits(4)} credits.`
+  ].join("<br>");
+
+  document.getElementById("out").innerHTML = msg;
+</script>
+    <br>
+    <footer class="center">
+        <small><a href="geo455_ex3.html">Back to Exercise 3 Page</a></small>
+    </footer>
+</body>
+</html>
