@@ -1,0 +1,76 @@
+/* Page + full-screen map - Make the page tall enough for a full-screen map*/
+html, body {
+  height: 100%;
+}
+/* Somewhat different styling for the body */
+body {
+  margin: 0;
+  background-color: whitesmoke;
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+/* Make the map fill the entire browser window */
+#map {
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+}
+/*Style the title panel (overlay box)*/
+#title {
+  position: fixed;
+  top: 10px;
+  left: 0;
+  right: 0;
+  width: fit-content;
+  margin: 0 auto;
+  font-size: 2em;
+  font-family: "Lora", serif;
+  letter-spacing: .03em; /*Slightly reduced the letter spacing*/
+  padding: 10px 15px;
+  background: #ffeaeacf; /*Changed background color and transparency of description overlay box to make the title more readable*/
+  border: 1px solid #777;
+  border-radius: 6px;
+  z-index: 800;
+}
+/*Style the description panel (overlay box)*/
+#description {
+  position: fixed;
+  top: 100px;       
+  left: 10px;
+  width: 300px;     
+  height: 650px;
+  padding: 2px 15px;
+  background: #fef2e8ff;
+  border: 1px solid #777;
+  border-radius: 6px;
+  z-index: 800;
+  overflow-y: auto;
+}
+/*Make paragraph text inside the description readable */
+#description p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+/*Style links inside the description (and hover effect)*/
+#description a {
+  color: #005daa;
+  text-decoration: none;
+}
+
+#description a:hover {
+  text-decoration: underline;
+}
+/*Added 'back' to create a link that brings you back to my index page*/
+#footer {
+  position: fixed;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  padding: 8px;
+  background: #ffeaeacf;   /* similar to title */
+  border: 1px solid #777;
+  border-radius: 6px;
+  z-index: 800;
+  text-align: center;
+}

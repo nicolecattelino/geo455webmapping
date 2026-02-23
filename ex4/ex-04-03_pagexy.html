@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <title>Event object</title>
+        <style>
+            .center { text-align: center; }
+        </style>
+    </head>
+    <body>
+        <p id="position"></p>
+        <script>
+            var page_coord = document.getElementById("position");
+            document.addEventListener("click", function(e) {
+                page_coord.innerHTML = e.pageX + ", " + e.pageY;
+            });
+        </script>
+        <br><br><br>
+        <footer class="center">
+            <small><a href="geo455_ex4.html">Back to Exercise 4 Page</a></small>
+        </footer>
+    </body>
+</html>

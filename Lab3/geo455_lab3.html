@@ -1,15 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Title</title>
-        <link rel="stylesheet" href="styles.css" />
-        <script src="script.js"></script>
-    </head>
-    <body>
-        <h1 class="title">Hello World</h1>
-        <div id="mainDiv">Hello Div</div>
-        <br />
-        <button onclick="buttonClicked()">Click me</button>
-    </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GEO 455: Lab 3</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  
+  <!-- Make sure you put the leaflet map library AFTER Leaflet's CSS --> 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  
+  <!-- Slightly different styling (updated in CSS as well) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="lab3.css" />
+</head>
+<body>
+  <div id="map"></div>
+
+  <h1 id="title">Lab 3: Hot air balloon events interactive map</h1>
+
+  <div id="description">
+    <h2>Hot air balloon events (in order of yearly occurrence):</h2>
+      <ol>
+         <li>Monroe Balloons and Bands Festival</li>
+         <li>Rise &amp; Shine Balloon Rally</li>
+         <li>Taste N' Glow Balloon Fest</li>
+         <li>Dairyland Balloon Jubilee</li>
+         <li>Paperfest</li>
+         <li>EAA Airventure</li>
+         <li>Saluting Heroes Balloon Rally</li>
+         <li>Lakeshore Balloon Rally</li>
+         <li>Burgerfest</li>
+         <li>Summer In The Park - Flight Night</li>
+         <li>igNight Market</li>
+      </ol>
+    <img src="images/ballooning.jpg" alt="Photo I took at Taste N' Glow, 2023" width="300">
+  </div>
+  <!-- Your map code  -->
+  <script src="lab3.js"></script>
+  <footer id="footer"> <!-- Added footer, which is a link to head back to my index (updated in CSS as well) -->
+           <small>
+             Map authored by Nicole Cattelino &nbsp;|&nbsp;
+             <a href="../index.html">Back to Main Page</a></small>
+  </footer>  
+</body>
 </html>

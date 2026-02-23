@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <title>Working with user input</title>
+        <style>
+            .center { text-align: center; }
+        </style>
+    </head>
+    <body>
+        <p>First number: <input type="number" id="num1" min="1" max="200" value=""></p>
+        <p>Second number: <input type="number" id="num2" min="0" max="200" value=""></p>
+        
+        <input type="button" id="multiply" value="Multiply!">
+        <p id="result"></p>
+        <input type="button" id="add" value="Add!">
+        <p id="result1"></p>
+        
+        <script>
+            var num1 = document.getElementById("num1");
+            var num2 = document.getElementById("num2");
+            var result = document.getElementById("result");
+            var result1 = document.getElementById("result1");
+            
+            document.getElementById("multiply").addEventListener("click", function() {
+                result.innerHTML = "The multiplication result is: " + num1.value * num2.value;
+            });
+            document.getElementById("add").addEventListener("click", function() {
+                result1.innerHTML = "The addition result is: " + (Number(num1.value) + Number(num2.value));
+            });
+        </script>
+        <br>
+        <footer class="center">
+            <small><a href="geo455_ex4.html">Back to Exercise 4 Page</a></small>
+        </footer>
+    </body>
+</html>
