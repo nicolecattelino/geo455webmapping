@@ -1,15 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Title</title>
-        <link rel="stylesheet" href="styles.css" />
-        <script src="script.js"></script>
-    </head>
-    <body>
-        <h1 class="title">Hello World</h1>
-        <div id="mainDiv">Hello Div</div>
-        <br />
-        <button onclick="buttonClicked()">Click me</button>
-    </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GEO 455: Lab 4</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  
+  <!-- Make sure you put the leaflet map library AFTER Leaflet's CSS --> 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+   <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+  
+  <!-- Slightly different styling (updated in CSS as well) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="lab4.css" />
+</head>
+<body>
+  <div id="map"></div>
+
+  <h1 id="title">Lab 4: New Seven Wonders of the World</h1>
+
+  <div id="description">
+      <p>In this assignment, we are working with layer controls. We have three layers, landmarks, basemap, and SRTM 30m hillshade map using WMS service. 
+       Landmarks are based on encyclopedia Britannica's entry on <a href="https://www.britannica.com/list/new-seven-wonders-of-the-world">
+       New Seven Wonders of the World</a> and the images are linked from Wikipedia Common images</p>
+   <p>Map authored by Nicole Cattelino</p>
+   <small><a href="../index.html">Back to Main Page</a></small>
+  </div>
+  <!-- Your map code  -->
+  <script src="lab4.js"></script> 
+</body>
 </html>
