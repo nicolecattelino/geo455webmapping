@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Loading GeoJSON from object</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 99.3%;
+            width: 100%;
+        }
+      .center { text-align: center; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+
+let map = L.map("map").setView([43, -105], 4);
+
+L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png", {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attribution/">CartoDB</a>',
+    subdomains: "abcd",
+    maxZoom: 19
+}).addTo(map);
+
+let states = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {"Name": "North Dakota"},
+      "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+              [[-104.05, 48.99], [-97.22,  48.98], 
+              [-96.58,  45.94], [-104.03, 45.94], 
+              [-104.05, 48.99]]
+          ]
+      }
+    }, 
+    {
+      "type": "Feature",
+      "properties": {"Name": "Colorado"},
+      "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+              [[-109.05, 41.00], [-102.06, 40.99], 
+              [-102.03, 36.99], [-109.04, 36.99], 
+              [-109.05, 41.00]]
+          ] 
+      }
+    },
+    {
+    "type": "FeatureCollection",
+    "features": [
+        {
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+            "coordinates": [
+            [
+            [
+              -88.15148054674478,
+              34.99541617852998
+            ],
+            [
+              -88.46768036211671,
+              31.923029452028928
+            ],
+            [
+              -88.36614370362011,
+              30.30304783213434
+            ],
+            [
+              -87.46055917473979,
+              30.283295946009346
+            ],
+            [
+              -87.57780593151733,
+              30.985276497022483
+            ],
+            [
+              -85.00185218178669,
+              31.051268398251764
+            ],
+            [
+              -84.96351017400822,
+              32.36886977595461
+            ],
+            [
+              -85.53735121878745,
+              34.99005837148704
+            ],
+            [
+              -88.15148054674478,
+              34.99541617852998
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    }
+  ]
+}
+  ]
+};
+
+L.geoJSON(states).addTo(map);
+    </script>
+  <footer class="center">
+            <small><a href="geo455_ex6.html">Back to Exercise 6 Page</a></small>
+        </footer>
+</body>
+</html>
+
