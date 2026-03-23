@@ -30,6 +30,8 @@ L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{
     maxZoom: 19
 }).addTo(map);
 
+L.control.scale().addTo(map);       
+        
 var radarUrl = 'https://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi';
 var radarDisplayOptions = {
   layers: 'nexrad-n0r-900913',
@@ -52,7 +54,10 @@ $.getJSON(weatherAlertsUrl, function(data) {
       return { color: alertColor };
     },
     onEachFeature: function(feature, layer) {
-      layer.bindPopup(feature.properties.headline);
+        layer.bindPopup(feature.properties.headline);
+        layer.on("click", function(e) {
+            map.fitBounds(e.target.getBounds());
+        });
     }
   }).addTo(map);
 });

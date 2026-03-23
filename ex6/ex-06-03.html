@@ -29,17 +29,32 @@ L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{
     maxZoom: 19
 }).addTo(map);
 
+L.control.scale().addTo(map);       
+        
+// custom earthquake icon
+let earthquakeIcon = L.icon({
+    iconUrl: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Map_marker_icon_%E2%80%93_Nicolas_Mollet_%E2%80%93_Earthquake_%E2%80%93_Events_%E2%80%93_Classic.png",
+    iconSize: [32, 37],
+    iconAnchor: [16, 37],
+    popupAnchor: [0, -30]
+});       
+        
 // Load GeoJSON from an external file
 let url = 
     "https://earthquake.usgs.gov/earthquakes/feed/v1.0/" + 
     "summary/4.5_week.geojson";
 fetch(url)
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(data) {  // Add GeoJSON layer to the map once the file is loaded
-        L.geoJSON(data).addTo(map);
-    });
+.then(function(response) {
+    return response.json();
+})
+.then(function(data) {
+
+    L.geoJSON(data, {
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, { icon: earthquakeIcon });
+        }
+    }).addTo(map);
+});
 
     </script>
 <footer class="center">

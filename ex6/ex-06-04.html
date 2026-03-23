@@ -27,6 +27,8 @@ L.tileLayer(
     {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}
 ).addTo(map);
 
+L.control.scale().addTo(map);      
+        
 // Add EONET events
 fetch("https://eonet.gsfc.nasa.gov/api/v3/events")
     .then(function(response) {
@@ -40,6 +42,10 @@ fetch("https://eonet.gsfc.nasa.gov/api/v3/events")
                     L.geoJSON(element2, {
                         pointToLayer: function(geojson_point, latlng) {
                             return L.circleMarker(latlng);
+                        },
+                        onEachFeature: function(feature, layer) {
+                            layer.on("click", function(e) {map.setView(e.latlng, 6);
+                        });
                         }
                     })
                         .bindPopup(element1.title + '<br>' + element2.date)
