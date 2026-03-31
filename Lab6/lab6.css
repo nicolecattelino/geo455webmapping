@@ -33,3 +33,7 @@ html, body {
   color: #666;
   margin-bottom: 8px;
 }
+
+.small {
+  font-size: 0.875rem;
+}
