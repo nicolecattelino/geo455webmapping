@@ -1,0 +1,58 @@
+<html lang="en">
+   <head>
+      <title>Ex-7-1: DOM manipulation</title>
+        <style>
+            .center { text-align: center; }
+        </style>
+      <script 
+      src="https://code.jquery.com/jquery-4.0.0.min.js" 
+      integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" 
+      crossorigin="anonymous">
+      </script>
+
+      <script>
+        // create a reusable design variable to change the css of the element with id test
+         var design = {
+              color: "White",
+              background: "Black",
+              border: "3px solid black"
+          }
+         
+         var change = {
+             color: "Blue",
+             background: "Grey"
+         }
+          // use the ready function to manipulate the DOM when the document is ready
+        $(document).ready(function() {
+            $("p:first").css('background-color', 'yellow');
+            $("button").click(function(){
+                $("ul").css(change);
+                $("#test").css(design);
+                $("p:first").css('color', 'red');
+                $("p:last").css('color', 'green')
+            });
+         });
+
+         //try creating a new variable and use it in a function to change the text of the list items and call it when the button is clicked
+      </script>
+   </head>
+	
+   <body>
+       <h1> Webmapping </h1>
+       <p> Technologies we learned </p>
+       <ul>
+           <li> HTML </li>
+           <li> CSS </li>
+           <li> JavaScript </li>
+           <li> jQuery </li>
+       </ul>
+
+
+       <p id="test">Check console to get the text for list</p> 
+       <button>Change list text color</button>
+    <br><br>
+       <footer class="center">
+        <small><a href="geo455_ex7.html">Back to Exercise 7 Page</a></small>
+       </footer>
+    </body>
+</html>
