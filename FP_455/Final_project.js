@@ -1,8 +1,3 @@
-var streets = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	maxZoom: 19,
-	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-});
-
 var USGS_USImagery = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}', {
 	maxZoom: 20,
 	attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
@@ -15,7 +10,7 @@ var Esri_WorldTopoMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest
 var mymap = L.map('map', {
     center: [35.64282870549498, -83.54749712586067],
     zoom: 10,
-    layers: streets
+    layers: Esri_WorldTopoMap
 });
 
 //Easy button variables and controls
@@ -67,6 +62,17 @@ function setupHighlight(layerGroup) {
 
 }
 
+var boundaryLayer = L.geoJSON(boundary, {
+  style: function () {
+    return {
+      color: "black",
+      weight: 2,
+      fill: false,
+      opacity: 0.8
+    };
+  }
+}).addTo(mymap);
+
 // Easy trails
 var easyLayer = L.geoJSON(easyTrails, {
   style: function () {
@@ -101,7 +107,7 @@ var moderateLayer = L.geoJSON(moderateTrails, {
       "<br><b>Length:</b> " + feature.properties.LENGTH_MI + " miles"
     );
   }
-});
+}).addTo(mymap);
 
 // Hard trails
 var hardLayer = L.geoJSON(hardTrails, {
@@ -119,11 +125,58 @@ var hardLayer = L.geoJSON(hardTrails, {
       "<br><b>Length:</b> " + feature.properties.LENGTH_MI + " miles"
     );
   }
-}).addTo(mymap);
+});
 
 setupHighlight(easyLayer, "green");
 setupHighlight(moderateLayer, "orange");
 setupHighlight(hardLayer, "red");
+
+// Parking lot icon sizes
+function getIconSize(value) {
+  return value >= 89 ? 34 :
+         value >= 43 ? 30 :
+         value >= 21 ? 26 :
+         value >= 8  ? 22 :
+                       18;
+}
+
+
+var parkingClusters = L.markerClusterGroup();
+
+
+
+// Parking layer icon
+var parkingLayer = L.geoJSON(parkingSpots, {
+
+  pointToLayer: function (feature, latlng) {
+
+    var spaces = feature.properties.parking || 0;
+    var size = getIconSize(spaces);
+
+    var carIcon = L.icon({
+      iconUrl: "images/car_icon.png",
+      iconSize: [size, size],
+      iconAnchor: [size / 2, size / 2],
+      popupAnchor: [0, -size / 2]
+    });
+
+    return L.marker(latlng, { icon: carIcon });
+  },
+
+  onEachFeature: function (feature, layer) {
+
+    var spaces = feature.properties.parking || 0;
+
+    layer.bindPopup(
+      "<b>Location:</b> " + feature.properties.LOC_NAME +
+      "<br><b>Parking Spaces:</b> " + spaces +
+      "<br><b>Type:</b> " + feature.properties.TYPE
+    );
+  }
+});
+
+parkingClusters.addLayer(parkingLayer);
+mymap.addLayer(parkingClusters);
 
 // Search box
 /*var searchControl = new L.Control.Search({
@@ -145,7 +198,6 @@ mymap.addControl(searchControl); */
 
 var baseLayers = {
   Satellite: USGS_USImagery,
-  Streets: streets,
   Topography: Esri_WorldTopoMap
 };
 
@@ -153,6 +205,7 @@ var overlays = {
   "🟩 Easy Trails": easyLayer,
   "🟧 Moderate Trails": moderateLayer,
   "🟥 Hard Trails": hardLayer,
+  "<img src='images/cluster_icon.png' height=16> Parking (Clustered)": parkingClusters
 };
 
 L.control.layers(baseLayers, overlays, { collapsed: false }).addTo(mymap);
