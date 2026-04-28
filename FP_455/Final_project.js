@@ -86,7 +86,8 @@ var easyLayer = L.geoJSON(easyTrails, {
   onEachFeature: function (feature, layer) {
     layer.bindPopup(
       "<b>Trail Name:</b> " + feature.properties.TRAILNAME +
-      "<br><b>Length:</b> " + feature.properties.LENGTH_MI + " miles"
+      "<br><b>Length:</b> " + feature.properties.LENGTH_MI + " miles" + 
+      "<br><br><a href='https://www.nps.gov/grsm/planyourvisit/hiking.htm' target='_blank'>More info about hiking the park trails</a>"
     );
   }
 });
@@ -104,10 +105,11 @@ var moderateLayer = L.geoJSON(moderateTrails, {
   onEachFeature: function (feature, layer) {
     layer.bindPopup(
       "<b>Trail Name:</b> " + feature.properties.TRAILNAME +
-      "<br><b>Length:</b> " + feature.properties.LENGTH_MI + " miles"
+      "<br><b>Length:</b> " + feature.properties.LENGTH_MI + " miles" + 
+      "<br><br><a href='https://www.nps.gov/grsm/planyourvisit/hiking.htm' target='_blank'>More info about hiking the park trails</a>"
     );
   }
-}).addTo(mymap);
+});
 
 // Hard trails
 var hardLayer = L.geoJSON(hardTrails, {
@@ -122,7 +124,8 @@ var hardLayer = L.geoJSON(hardTrails, {
   onEachFeature: function (feature, layer) {
     layer.bindPopup(
       "<b>Trail Name:</b> " + feature.properties.TRAILNAME +
-      "<br><b>Length:</b> " + feature.properties.LENGTH_MI + " miles"
+      "<br><b>Length:</b> " + feature.properties.LENGTH_MI + " miles" + 
+      "<br><br><a href='https://www.nps.gov/grsm/planyourvisit/hiking.htm' target='_blank'>More info about hiking the park trails</a>"
     );
   }
 });
@@ -133,11 +136,11 @@ setupHighlight(hardLayer, "red");
 
 // Parking lot icon sizes
 function getIconSize(value) {
-  return value >= 89 ? 34 :
+  return value >= 89 ? 35 :
          value >= 43 ? 30 :
-         value >= 21 ? 26 :
-         value >= 8  ? 22 :
-                       18;
+         value >= 21 ? 25 :
+         value >= 8  ? 20 :
+                       15;
 }
 
 
@@ -169,30 +172,74 @@ var parkingLayer = L.geoJSON(parkingSpots, {
 
     layer.bindPopup(
       "<b>Location:</b> " + feature.properties.LOC_NAME +
-      "<br><b>Parking Spaces:</b> " + spaces +
-      "<br><b>Type:</b> " + feature.properties.TYPE
+      "<br><b>Parking Spaces:</b> " + spaces
     );
   }
 });
 
 parkingClusters.addLayer(parkingLayer);
-mymap.addLayer(parkingClusters);
+
+// View tower images
+var viewpointImages = {
+  "Clingmans Dome Tower": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/2017-05-17_13_36_07_View_from_near_the_top_of_the_ramp_to_the_Clingmans_Dome_Observation_Tower_in_Great_Smoky_Mountains_National_Park%2C_on_the_border_of_Sevier_County%2C_Tennessee_and_Swain_County%2C_North_Carolina.jpg/960px-thumbnail.jpg?_=20170923223808",
+  "Look Rock Tower": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/2017-05-17_19_41_34_View_south_from_the_Look_Rock_Observation_Tower_at_Look_Rock_along_Foothills_Parkway_in_Great_Smoky_Mountains_National_Park%2C_within_Blount_County%2C_Tennessee.jpg/960px-thumbnail.jpg?_=20170924044716",
+  "Shuckstack": "https://upload.wikimedia.org/wikipedia/commons/6/66/Shuckstack-fontana.jpg?_=20070819234834",
+  "Cove Mountain Fire Tower": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Cove-mtn-air-quality-station-tn1.jpg/500px-Cove-mtn-air-quality-station-tn1.jpg?_=20091012213534",
+  "Mt. Cammerer Lookout Tower": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Mount_Cammerer_Firetower_%28245735700%29.jpg/960px-Mount_Cammerer_Firetower_%28245735700%29.jpg?_=20240822180408",
+  "Mt. Sterling Lookout Tower": "images/sterling.jpg"
+};
+
+
+// Viewpoints
+var viewpointLayer = L.geoJSON(viewpoints, {
+
+  pointToLayer: function (feature, latlng) {
+
+    var vpIcon = L.icon({
+      iconUrl: "images/camera_icon.png",
+      iconSize: [20, 20],
+      iconAnchor: [8, 8]
+    });
+
+    return L.marker(latlng, { icon: vpIcon });
+  },
+
+  onEachFeature: function (feature, layer) {
+
+  var name = feature.properties.LOC_NAME;
+  var img = viewpointImages[name];
+
+  layer.bindPopup(
+    "<b>Viewpoint:</b> " + name +
+    "<br><b>Type:</b> " + feature.properties.DATAACCESS +
+    "<br><br>" +
+    (img ? "<img src='" + img + "' width='220'>" : "<i>No photo available</i>")
+  );
+}
+
+});
 
 // Search box
-/*var searchControl = new L.Control.Search({
-    position:'topright',
-    layer: peaks,
-    propertyName: 'TITLE',
-    marker: false,
-    markeranimate: true,
-    delayType: 50,
-    collapsed: false,
-    textPlaceholder: 'Search by Peak Name: e.g. Everest, Lhotse',   
-    moveToLocation: function(latlng, title, map) {
-        mymap.setView(latlng, 15);}
-}); 
+var allTrailsLayer = L.layerGroup([
+  easyLayer,
+  moderateLayer,
+  hardLayer
+]);
 
-mymap.addControl(searchControl); */
+var searchControl = new L.Control.Search({
+  layer: allTrailsLayer,
+  propertyName: 'TRAILNAME',
+  marker: false,
+  position: 'topright',
+  collapsed: false,
+  textPlaceholder: 'Search for a trail...',
+
+  moveToLocation: function(latlng, title, map) {
+    map.fitBounds(latlng.layer.getBounds());
+  }
+});
+
+mymap.addControl(searchControl);
 
 /* Layer control and Menu Item */
 
@@ -205,7 +252,9 @@ var overlays = {
   "🟩 Easy Trails": easyLayer,
   "🟧 Moderate Trails": moderateLayer,
   "🟥 Hard Trails": hardLayer,
-  "<img src='images/cluster_icon.png' height=16> Parking (Clustered)": parkingClusters
+  "<img src='images/car_icon.png'height=16> Parking lots (individual)": parkingLayer,
+  "<img src='images/cluster_icon.png' height=16> Parking lots (clustered)": parkingClusters,
+  "<img src='images/camera_icon.png'height=16> View towers": viewpointLayer
 };
 
 L.control.layers(baseLayers, overlays, { collapsed: false }).addTo(mymap);

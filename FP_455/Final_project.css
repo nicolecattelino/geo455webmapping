@@ -37,3 +37,5 @@ html, body {
 .small {
   font-size: 0.875rem;
 }
+
+.center { text-align: center; }

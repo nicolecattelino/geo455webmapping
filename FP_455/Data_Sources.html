@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Data Sources | GEO 455 Final Project</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .content-card {
+      max-width: 1000px;
+      margin: 30px auto;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    .section-title {
+      border-left: 5px solid #198754;
+      padding-left: 10px;
+      margin-top: 30px;
+    }
+
+    .small-note {
+      font-size: 0.9rem;
+      color: #6c757d;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+  <div class="container-fluid">
+    <span class="navbar-brand fw-semibold">
+      Data Sources – GEO 455 Final Project
+    </span>
+    <span class="fw-semibold">Nicole Cattelino</span>
+  </div>
+</nav>
+
+<!-- Main content -->
+<div class="container content-card">
+
+  <!-- Intro -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+
+      <h2 class="section-title">Data Sources Overview</h2>
+
+      <p>
+        This page documents all spatial and non-spatial datasets used in the creation of the Great Smoky Mountains National Park web map. All datasets were processed and standardized in ArcGIS Pro before being exported as GeoJSON for web use.
+      </p>
+
+    </div>
+  </div>
+
+  <!-- Trail Data -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+
+      <h2 class="section-title">Trail Data</h2>
+
+      <ul>
+        <li>
+          <strong>National Park Service (NPS) Trails Dataset</strong><br>
+          Source: U.S. National Park Service Open Data Portal<br>
+          <a href="https://public-nps.opendata.arcgis.com/" target="_blank">
+            https://public-nps.opendata.arcgis.com/
+          </a>
+        </li>
+
+        <li class="mt-2">
+          <strong>Trail Difficulty Classification (Custom Attribute)</strong><br>
+          Derived from external recreation sources (e.g., AllTrails descriptions) and manually assigned in ArcGIS Pro.
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <!-- Parking Data -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+
+      <h2 class="section-title">Parking Data</h2>
+
+      <ul>
+        <li>
+          <strong>Parking Locations Dataset</strong><br>
+          Source: National Park Service Open Data Portal<br>
+          <a href="https://public-nps.opendata.arcgis.com/" target="_blank">
+            https://public-nps.opendata.arcgis.com/
+          </a>
+        </li>
+
+        <li class="mt-2">
+          <strong>Parking Capacity Field Calculation</strong><br>
+          Parking capacity values were calculated by summing available attribute fields in ArcGIS Pro to create a single standardized field for graduated symbology. 
+            Quantile data classification was used to determine the size of each symbol.
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <!-- Viewpoints -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+
+      <h2 class="section-title">Viewpoint Data</h2>
+
+      <ul>
+        <li>
+          <strong>Viewpoint / Fire Tower Locations</strong><br>
+          Source: National Park Service Open Data Portal<br>
+          <a href="https://public-nps.opendata.arcgis.com/" target="_blank">
+            https://public-nps.opendata.arcgis.com/
+          </a>
+        </li>
+
+        <li class="mt-2">
+          <strong>Viewpoint Images</strong><br>
+          Images sourced from Wikimedia Commons (Creative Commons licensed). Some viewpoints do not have available imagery and are labeled accordingly in the popup interface.
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <!-- Basemaps -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+
+      <h2 class="section-title">Basemap and Reference Layers</h2>
+
+      <ul>
+        <li>
+          <strong>USGS Imagery Basemap</strong><br>
+          U.S. Geological Survey – National Map Services<br>
+          <a href="https://leaflet-extras.github.io/leaflet-providers/preview/" target="_blank">
+            https://leaflet-extras.github.io/leaflet-providers/preview/</a>
+        </li>
+
+        <li class="mt-2">
+          <strong>Esri World Topographic Map</strong><br>
+          Esri Basemap Services<br>
+          <a href="https://leaflet-extras.github.io/leaflet-providers/preview/" target="_blank">
+            https://leaflet-extras.github.io/leaflet-providers/preview/</a>
+        </li>
+
+        <li class="mt-2">
+          <strong>Minimap layer</strong><br>
+          <a href="https://leafletjs.com/plugins.html" target="_blank">
+            https://leafletjs.com/plugins.html
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <!-- Processing -->
+  <div class="card shadow-sm mb-5">
+    <div class="card-body">
+
+      <h2 class="section-title">Data Processing and Web Delivery</h2>
+
+      <ul>
+        <li>All vector datasets were cleaned and standardized in ArcGIS Pro.</li>
+        <li>Attribute fields were joined, calculated, and simplified for web performance.</li>
+        <li>Parking data was classified using natural breaks for graduated symbol mapping.</li>
+        <li>All spatial layers were exported as GeoJSON files.</li>
+        <li>The final web map was built using Phoenix Code and hosted via GitHub Pages.</li>
+      </ul>
+
+      <p class="small-note mt-3">
+        All datasets were used for academic purposes in GEO 455 Web Mapping.
+      </p>
+
+    </div>
+  </div>
+
+  <!-- Back button -->
+  <a href="Final_project.html" class="btn btn-success w-100 mb-5">
+    Back to Map
+  </a>
+
+</div>
+
+</body>
+</html>

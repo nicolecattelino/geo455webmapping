@@ -46,7 +46,8 @@
    <script src="mod_trails.js"></script>
    <script src="hard_trails.js"></script>
    <script src="parking.js"></script>
-   
+   <script src="view_towers.js"></script>
+
    
 </head> 
 
@@ -81,18 +82,28 @@
          <div class="card-body">  
             <h5 class="card-title mb-3">Map Layers and Controls</h5>
 
-   <p><strong>Trail types by difficulty level:</strong> Trails separated by difficulty as well as dedicated horse trails. Click on each trail to get the trail name and length. </p>
+   <p><strong>Trail types by difficulty level:</strong> Trails separated by difficulty. Click on each trail to get the trail name and length. </p>
+            
    <p><strong>Search and Navigation:</strong> Use trail-name search, the mini map, scale bar, and full-extent button to explore efficiently.</p>
-   <p><strong>Graduated symbols showing parking areas:</strong> Parking symbol size represents the number of parking spots available for each parking lot (still a work in progress).</p>
-   <p><strong>Physical geography layer:</strong> Still a work in progress. I plan to use a DEM of the park and modify the symbology on ArcGIS Pro to help people understand elevation before importing to Phoenix Code as a geoJSON. </p> 
+            
+   <p><strong>Parking lot symbol sizes (graduated symbols):</strong></p>
+      <p>
+         <img src="images/car_icon.png" style="width:15px;"> 0–7 spaces<br>
+         <img src="images/car_icon.png" style="width:20px;"> 8–20 spaces<br>
+         <img src="images/car_icon.png" style="width:25px;"> 21–42 spaces<br>
+         <img src="images/car_icon.png" style="width:30px;"> 43–88 spaces<br>
+         <img src="images/car_icon.png" style="width:35px;"> 89–291 spaces
+      </p>
+   <p><u><i>Note:</i></u> Parking icon size represents the number of available parking spaces at each lot. Larger symbols indicate higher capacity, allowing quick comparison of parking availability near trails.</p>
+            
+   <p><img src="images/cluster_icon.png" style="width:20px;"><strong> Parking clustering:</strong> Parking points are grouped into clusters at wider zoom levels to reduce clutter and improve performance. As users zoom in, clusters expand into individual parking locations for more detailed viewing.</p>
+            
+   <p><img src="images/camera_icon.png" style="width:20px;"><strong> View towers layer:</strong> Viewpoints are displayed as clickable camera icons across the park. When a user clicks a viewpoint, a popup appears showing the viewpoint name and access type (e.g., public or restricted access). 
+      Some viewpoints also include an image when available to help users understand what the view looks like. </p> 
    <hr> 
-   <p class="small text-muted mb-1">Map authored by Nicole Cattelino</p>
-   <small><a href="../index.html">Back to Main Page</a></small>
-   
-   <hr>
-<p>
-  <a href="About.html">About this map</a>
-</p>
+   <p><small><a href="About_map.html">About this map</a></small></p>
+   <p><small><a href="Data_Sources.html">Data sources</a></small></p>
+
                </div> 
             </div> 
          </div> 
