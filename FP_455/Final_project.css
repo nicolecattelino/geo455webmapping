@@ -34,6 +34,19 @@ html, body {
   margin-bottom: 8px;
 }
 
+.legend-icon {
+  width: 40px; /* fixed column for alignment */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.legend-icon img {
+  display: block;
+}
+
 .small {
   font-size: 0.875rem;
 }

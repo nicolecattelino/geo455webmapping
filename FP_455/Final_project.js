@@ -136,11 +136,9 @@ setupHighlight(hardLayer, "red");
 
 // Parking lot icon sizes
 function getIconSize(value) {
-  return value >= 89 ? 35 :
-         value >= 43 ? 30 :
-         value >= 21 ? 25 :
-         value >= 8  ? 20 :
-                       15;
+  return value >= 100 ? 35 :
+         value >= 50  ? 20 :
+                        15;
 }
 
 
@@ -196,7 +194,7 @@ var viewpointLayer = L.geoJSON(viewpoints, {
   pointToLayer: function (feature, latlng) {
 
     var vpIcon = L.icon({
-      iconUrl: "images/camera_icon.png",
+      iconUrl: "images/tower_icon.png",
       iconSize: [20, 20],
       iconAnchor: [8, 8]
     });
@@ -254,7 +252,7 @@ var overlays = {
   "🟥 Hard Trails": hardLayer,
   "<img src='images/car_icon.png'height=16> Parking lots (individual)": parkingLayer,
   "<img src='images/cluster_icon.png' height=16> Parking lots (clustered)": parkingClusters,
-  "<img src='images/camera_icon.png'height=16> View towers": viewpointLayer
+  "<img src='images/tower_icon.png'height=16> View towers": viewpointLayer
 };
 
 L.control.layers(baseLayers, overlays, { collapsed: false }).addTo(mymap);

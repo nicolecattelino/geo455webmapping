@@ -118,14 +118,21 @@
       </ul>
 
       <h5>Data processing</h5>
-      <ul>
+      <ol>
         <li>Joined trail difficulty CSV to NPS trail shapefile using trail names</li>
         <li>Cleaned and standardized attribute fields</li>
         <li>Calculated parking capacity from multiple fields</li>
         <li>Applied graduated symbology for parking data</li>
         <li>Converted vector layers to GeoJSON for web use</li>
-      </ul>
-
+      </ol>
+      
+      <!-- Workflow Diagram -->
+      <div class="text-center mt-3">
+        <img src="images/Workflow_455.png" alt="Workflow Diagram"
+          class="img-fluid rounded shadow-sm">
+        <p class="small-note mt-2">Figure 1. Project workflow diagram.</p>
+      </div>
+      
       <h5>Web delivery</h5>
       <p>
         All vector datasets are delivered as GeoJSON and rendered using Leaflet. Basemaps and external services are accessed via tile layers. The final application is hosted on GitHub Pages as an interactive web map.
