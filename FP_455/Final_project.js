@@ -71,14 +71,13 @@ function getIconSize(value) {
 // ===============================
 // VIEWPOINT IMAGES
 // ===============================
-var viewpointImages = {
-  "Clingmans Dome Tower": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/2017-05-17_13_36_07_View_from_near_the_top_of_the_ramp_to_the_Clingmans_Dome_Observation_Tower.jpg/960px-thumbnail.jpg",
-  "Look Rock Tower": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Look_Rock_Observation_Tower.jpg/960px-thumbnail.jpg",
-  "Shuckstack": "https://upload.wikimedia.org/wikipedia/commons/6/66/Shuckstack-fontana.jpg",
-  "Cove Mountain Fire Tower": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Cove-mtn-air-quality-station-tn1.jpg",
-  "Mt. Cammerer Lookout Tower": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Mount_Cammerer_Firetower.jpg",
-  "Mt. Sterling Lookout Tower": "images/sterling.jpg"
-};
+var viewpointImages = 
+  { "Clingmans Dome Tower": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/2017-05-17_13_36_07_View_from_near_the_top_of_the_ramp_to_the_Clingmans_Dome_Observation_Tower_in_Great_Smoky_Mountains_National_Park%2C_on_the_border_of_Sevier_County%2C_Tennessee_and_Swain_County%2C_North_Carolina.jpg/960px-thumbnail.jpg?_=20170923223808", 
+    "Look Rock Tower": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/2017-05-17_19_41_34_View_south_from_the_Look_Rock_Observation_Tower_at_Look_Rock_along_Foothills_Parkway_in_Great_Smoky_Mountains_National_Park%2C_within_Blount_County%2C_Tennessee.jpg/960px-thumbnail.jpg?_=20170924044716", 
+    "Shuckstack": "https://upload.wikimedia.org/wikipedia/commons/6/66/Shuckstack-fontana.jpg?_=20070819234834", 
+    "Cove Mountain Fire Tower": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Cove-mtn-air-quality-station-tn1.jpg/500px-Cove-mtn-air-quality-station-tn1.jpg?_=20091012213534", 
+    "Mt. Cammerer Lookout Tower": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Mount_Cammerer_Firetower_%28245735700%29.jpg/960px-Mount_Cammerer_Firetower_%28245735700%29.jpg?_=20240822180408", 
+    "Mt. Sterling Lookout Tower": "images/sterling.jpg" };
 
 // ===============================
 // LOAD ALL DATA
